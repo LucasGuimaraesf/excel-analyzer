@@ -36,7 +36,19 @@ Basta fazer upload da planilha — o sistema detecta os tipos de dados, identifi
 ```bash
 cd backend
 python -m venv venv
-venv\Scripts\activate        # Windows
-# source venv/bin/activate   # Linux/Mac
+venv\Scripts\activate             # Windows
+# source venv/bin/activate        # Linux/Mac
 pip install -r requirements.txt
 uvicorn app.main:app --reload
+```
+
+### Frontend
+```
+cd frontend
+npm install
+npm run dev
+```
+
+Acesse http://localhost:5173 no navegador.
+
+
