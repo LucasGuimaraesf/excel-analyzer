@@ -33,6 +33,19 @@ function SkeletonDashboard() {
 export default function DashboardPage() {
   const { data, isLoading, error, uploadFile, updateChartType, reset } = useAnalysis()
   const [filters, setFilters] = useState({})
+  const [hiddenCharts, setHiddenCharts] = useState(new Set())
+
+  const handleToggleVisibility = (chartId) => {
+    setHiddenCharts(prev => {
+      const next = new Set(prev)
+      if (next.has(chartId)) {
+        next.delete(chartId)
+      } else {
+        next.add(chartId)
+      }
+      return next
+    })
+  }
 
   // Initialize filters when data loads (all values selected)
   useEffect(() => {
@@ -168,7 +181,12 @@ export default function DashboardPage() {
               onClearAll={handleClearAll}
             />
           </div>
-          <ChartGrid charts={filteredCharts} onChangeType={updateChartType} />
+          <ChartGrid
+            charts={filteredCharts}
+            onChangeType={updateChartType}
+            hiddenCharts={hiddenCharts}
+            onToggleVisibility={handleToggleVisibility}
+          />
         </>
       )}
     </main>

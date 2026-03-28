@@ -1,6 +1,6 @@
 import ChartCard from './ChartCard'
 
-export default function ChartGrid({ charts, onChangeType }) {
+export default function ChartGrid({ charts, onChangeType, hiddenCharts, onToggleVisibility }) {
   if (!charts || charts.length === 0) return null
 
   return (
@@ -11,7 +11,12 @@ export default function ChartGrid({ charts, onChangeType }) {
           className="animate-fade-in-up"
           style={{ animationDelay: `${index * 80}ms` }}
         >
-          <ChartCard chart={chart} onChangeType={onChangeType} />
+          <ChartCard
+            chart={chart}
+            onChangeType={onChangeType}
+            isHidden={hiddenCharts?.has(chart.id)}
+            onToggleVisibility={onToggleVisibility}
+          />
         </div>
       ))}
     </div>
