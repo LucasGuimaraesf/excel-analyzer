@@ -49,6 +49,6 @@ npm install
 npm run dev
 ```
 
-Acesse [texto do link](http://localhost:5173)  no navegador.
+Acesse [http://localhost:5173](http://localhost:5173)  no navegador.
 
 
