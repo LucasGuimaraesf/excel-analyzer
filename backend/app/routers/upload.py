@@ -7,7 +7,7 @@ from app.utils.excel_parser import parse_excel
 
 router = APIRouter()
 
-MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB
+MAX_FILE_SIZE = 50 * 1024 * 1024  # 50MB
 
 
 @router.post("/upload", response_model=AnalysisResponse)
@@ -18,7 +18,7 @@ async def upload_excel(file: UploadFile = File(...)):
     contents = await file.read()
 
     if len(contents) > MAX_FILE_SIZE:
-        raise HTTPException(status_code=413, detail="Arquivo excede o limite de 10MB")
+        raise HTTPException(status_code=413, detail="Arquivo excede o limite de 50MB")
 
     try:
         df = parse_excel(contents)

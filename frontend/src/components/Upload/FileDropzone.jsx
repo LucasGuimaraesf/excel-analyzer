@@ -60,7 +60,7 @@ export default function FileDropzone({ onUpload, isLoading }) {
             {isDragActive ? 'Solte o arquivo aqui' : 'Arraste seu arquivo Excel'}
           </p>
           <p className="text-sm text-slate-400 mt-2">ou clique para selecionar (.xlsx, .xls)</p>
-          <p className="text-xs text-slate-300 mt-3">Maximo 10MB</p>
+          <p className="text-xs text-slate-300 mt-3">Maximo 50MB</p>
         </div>
       </div>
     </div>
