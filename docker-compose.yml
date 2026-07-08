@@ -1,0 +1,19 @@
+services:
+  backend:
+    build: ./backend
+    container_name: excel-analyzer-backend
+    restart: unless-stopped
+    # Porta exposta para acesso direto à API e ao Swagger (http://localhost:8000/docs).
+    # Opcional: o frontend acessa o backend internamente pela rede do compose.
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: excel-analyzer-frontend
+    restart: unless-stopped
+    # A aplicação fica acessível em http://localhost:8080
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend

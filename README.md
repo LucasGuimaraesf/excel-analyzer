@@ -29,7 +29,48 @@ Basta fazer upload da planilha — o sistema detecta os tipos de dados, identifi
 
 ---
 
-## Como rodar
+## Documentação
+
+A documentação de Engenharia de Requisitos (SRS) está em [`docs/`](docs/00-indice.md):
+requisitos funcionais e não funcionais, SRS tradicional, backlog ágil (DoR/DoD) e validação.
+
+---
+
+## Como rodar com Docker (recomendado)
+
+A forma mais simples — **não precisa instalar Python nem Node**, apenas o
+[Docker Desktop](https://www.docker.com/products/docker-desktop/).
+
+```bash
+git clone <url-do-repo>
+cd excel-data-analyzer
+docker compose up --build
+```
+
+Depois acesse:
+
+- **Aplicação:** [http://localhost:8080](http://localhost:8080)
+- **API / Swagger:** [http://localhost:8000/docs](http://localhost:8000/docs)
+
+Para parar: `Ctrl+C` e depois `docker compose down`.
+
+> A primeira execução baixa as imagens e compila o frontend (alguns minutos).
+> As próximas sobem em segundos graças ao cache do Docker.
+
+### Erro: "container name is already in use"
+
+Se ao subir aparecer algo como `Conflict. The container name "/excel-analyzer-backend"
+is already in use`, existe um container antigo com esse nome (por exemplo, de uma execução
+anterior em outra pasta). Remova os containers e suba novamente:
+
+```bash
+docker rm -f excel-analyzer-backend excel-analyzer-frontend
+docker compose up -d --build
+```
+
+---
+
+## Como rodar manualmente (desenvolvimento)
 
 ### Backend
 
